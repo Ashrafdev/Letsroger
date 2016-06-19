@@ -42,11 +42,14 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('DashedRoute');
 
-Router::scope('/', function (RouteBuilder $routes) {
+Router::scope('/api', function (RouteBuilder $routes) {
     $routes->extensions(['json', 'xml']);
     $routes->resources('Cocktails');
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
+//    $routes->resources('Cocktails', [
+//        'map' => ['add' => ['action' => 'add', 'method' => 'ADD']]
+//    ]);
+// This would connect /articles/deleteAll
     $routes->fallbacks('DashedRoute');
 });
 

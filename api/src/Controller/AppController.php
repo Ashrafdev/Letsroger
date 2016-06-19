@@ -29,17 +29,8 @@ use Crud\Controller\ControllerTrait;
 class AppController extends Controller
 {
     use \Crud\Controller\ControllerTrait;
-    /**
-     * Initialization hook method.
-     *
-     * Use this method to add common initialization code like loading components.
-     *
-     * e.g. `$this->loadComponent('Security');`
-     *
-     * @return void
-     */
+
     public $components = [
-        'RequestHandler',
         'Crud.Crud' => [
             'actions' => [
                 'Crud.Index',
@@ -47,8 +38,6 @@ class AppController extends Controller
                 'Crud.Add',
                 'Crud.Edit',
                 'Crud.Delete'
-            ],
-            'listeners' => ['Crud.Api', 'Crud.ApiPagination', 'Crud.ApiQueryLog'
             ]
         ]
     ];
@@ -59,7 +48,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->loadComponent('Csrf');
+//        $this->loadComponent('Csrf');
     }
 
     /**
@@ -72,7 +61,7 @@ class AppController extends Controller
     {
 //        $this->response->cors($this->request)
 //            ->allowOrigin(['*.localhost'])
-//            ->allowMethods(['GET', 'POST'])
+//            ->allowMethods(['GET', 'POST', 'PUT'])
 //            ->allowHeaders(['X-CSRF-Token'])
 //            ->allowCredentials()
 //            ->exposeHeaders(['Link'])
