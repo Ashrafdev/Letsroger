@@ -48,10 +48,7 @@ class AppController extends Controller
                 'Crud.Edit',
                 'Crud.Delete'
             ],
-            'listeners' => [
-                'Crud.Api',
-                'Crud.ApiPagination',
-                'Crud.ApiQueryLog'
+            'listeners' => ['Crud.Api', 'Crud.ApiPagination', 'Crud.ApiQueryLog'
             ]
         ]
     ];
@@ -63,6 +60,7 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Csrf');
+        $this->loadComponent('Paginator');
     }
 
     /**
@@ -86,6 +84,7 @@ class AppController extends Controller
         $this->response->type('application/json');
 
         $this->set('code', $this->response->statusCode());
+        $this->set('success', ($this->response->statusCode() == 200) ? true : false);
         $this->set('_serialize', true);
     }
 }

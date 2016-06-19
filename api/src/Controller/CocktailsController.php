@@ -14,13 +14,9 @@ class CocktailsController extends AppController
     public $paginate = [
         'page' => 1,
         'limit' => 10,
-        'maxLimit' => 99999999,
-        'fields' => [
-            'id', 'name', 'description', 'created'
-        ],
-        'sortWhitelist' => [
-            'id', 'name', 'description', 'created'
-        ]
+        'maxLimit' => 10,
+        'fields' => ['id', 'name', 'description', 'created'],
+        'sortWhitelist' => ['id', 'name', 'description', 'created']
     ];
 
     public function index()
@@ -28,7 +24,7 @@ class CocktailsController extends AppController
         $data = $this->paginate($this->Cocktails);
         $token = $this->request->param('_csrfToken');
 
-        $this->set(compact('data', 'token', 'pagination'));
+        $this->set(compact('data', 'token'));
         $this->set('_serialize', ['cocktails']);
     }
 
