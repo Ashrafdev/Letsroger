@@ -26,7 +26,7 @@ class CocktailsTable extends Table
 
         $this->table('cocktails');
         $this->displayField('name');
-        $this->primaryKey('id');
+        $this->primaryKey('uuid');
 
         $this->addBehavior('Timestamp');
     }
