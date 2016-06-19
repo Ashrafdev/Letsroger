@@ -73,8 +73,19 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+//        $this->response->cors($this->request)
+//            ->allowOrigin(['*.localhost'])
+//            ->allowMethods(['GET', 'POST'])
+//            ->allowHeaders(['X-CSRF-Token'])
+//            ->allowCredentials()
+//            ->exposeHeaders(['Link'])
+//            ->maxAge(300)
+//            ->build();
+
         $this->RequestHandler->renderAs($this, 'json');
         $this->response->type('application/json');
+
+        $this->set('code', $this->response->statusCode());
         $this->set('_serialize', true);
     }
 }
