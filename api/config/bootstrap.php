@@ -221,5 +221,7 @@ Type::build('datetime')
     ->useImmutable();
 
 Plugin::load('Crud');
-
 Plugin::load('ADmad/JwtAuth');
+Plugin::load('lcobucci/jwt');
+
+Plugin::load('lcobucci/jwt');
