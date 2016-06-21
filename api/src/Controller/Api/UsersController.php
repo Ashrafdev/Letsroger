@@ -9,6 +9,11 @@ use Firebase\JWT\JWT;
 
 class UsersController extends AppController
 {
+    public function beforeFilter(Event $event)
+    {
+        $this->eventManager()->off($this->Csrf);
+    }
+    
     public function initialize()
     {
         parent::initialize();
