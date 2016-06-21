@@ -46,12 +46,23 @@ Router::scope('/api', function (RouteBuilder $routes) {
     $routes->extensions(['json', 'xml']);
     $routes->resources('Cocktails');
     $routes->resources('Users');
-    $routes->connect('/users/register', ['controller' => 'Users', 'action' => 'index', 'prefix' => 'api']);
+    $routes->connect('/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
     $routes->connect('/users/token', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
     //$routes->connect('/users/register', ['controller' => 'Users', 'action' => 'index', 'prefix' => 'api']);
-//    $routes->resources('Cocktails', [
-//        'map' => ['add' => ['action' => 'add', 'method' => 'GET']]
-//    ]);
+    $routes->resources('Cocktails', [
+        'map' => [
+            'add' =>
+            [
+            'action' => 'add',
+            'method' => 'GET'
+            ],
+            'add' =>
+            [
+            'action' => 'add',
+            'method' => 'GET'
+            ],
+        ]
+    ]);
 // This would connect /articles/deleteAll
     $routes->fallbacks('DashedRoute');
 });
