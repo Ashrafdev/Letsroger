@@ -222,4 +222,3 @@ Type::build('datetime')
 
 Plugin::load('Crud');
 Plugin::load('ADmad/JwtAuth');
-Plugin::load('lcobucci/jwt');
