@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller\Api;
 
-use App\Controller\Api\AppController;
+use App\Controller\AppController;
 
 class CocktailsController extends AppController
 {

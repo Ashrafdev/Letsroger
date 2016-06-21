@@ -52,6 +52,9 @@ class UsersTable extends Table
             ->notEmpty('password');
 
         $validator
+            ->allowEmpty('token');
+
+        $validator
             ->boolean('active')
             ->allowEmpty('active');
 

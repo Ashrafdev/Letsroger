@@ -47,6 +47,7 @@ Router::scope('/api', function (RouteBuilder $routes) {
     $routes->resources('Cocktails');
     $routes->resources('Users');
     $routes->connect('/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'Api']);
+    $routes->connect('/users/token', ['controller' => 'Users', 'action' => 'token', 'prefix' => 'Api']);
     //$routes->connect('/users/register', ['controller' => 'Users', 'action' => 'index', 'prefix' => 'api']);
 //    $routes->resources('Cocktails', [
 //        'map' => ['add' => ['action' => 'add', 'method' => 'GET']]
