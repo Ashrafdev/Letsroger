@@ -30,8 +30,14 @@ class AppController extends Controller
 {
     use \Crud\Controller\ControllerTrait;
 
-    public $components = [
-        'Crud.Crud' => [
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Flash');
+//        $this->loadComponent('Csrf');
+        $this->loadComponent('Crud.Crud', [
             'actions' => [
                 'Crud.Index',
                 'Crud.View',
@@ -44,36 +50,46 @@ class AppController extends Controller
                 'Crud.ApiPagination',
                 'Crud.ApiQueryLog'
             ]
-        ]
-    ];
-
-    public function initialize()
-    {
-        parent::initialize();
-
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
-//        $this->loadComponent('Csrf');
+        ]);
+//        $this->loadComponent('Auth', [
+//            'storage' => 'Memory',
+//            'authenticate' => [
+//                'ADmad/JwtAuth.Jwt' => [
+//                    'userModel' => 'Users',
+//                    'fields' => [
+//                        'username' => 'id'
+//                    ],
+//                    'parameter' => 'token',
+//                    // Boolean indicating whether the "sub" claim of JWT payload
+//                    // should be used to query the Users model and get user info.
+//                    // If set to `false` JWT's payload is directly returned.
+//                    'queryDatasource' => true,
+//                ]
+//            ],
+//            'unauthorizedRedirect' => false,
+//            'checkAuthIn' => 'Controller.initialize',
+//            // If you don't have a login action in your application set
+//            // 'loginAction' to false to prevent getting a MissingRouteException.
+//            'loginAction' => false
+//        ]);
         $this->loadComponent('Auth', [
             'storage' => 'Memory',
             'authenticate' => [
+                'Form' => [
+                    'scope' => ['Users.active' => 1]
+                ],
                 'ADmad/JwtAuth.Jwt' => [
+                    'parameter' => 'token',
                     'userModel' => 'Users',
+                    'scope' => ['Users.active' => 1],
                     'fields' => [
                         'username' => 'id'
                     ],
-                    'parameter' => 'token',
-                    // Boolean indicating whether the "sub" claim of JWT payload
-                    // should be used to query the Users model and get user info.
-                    // If set to `false` JWT's payload is directly returned.
-                    'queryDatasource' => true,
+                    'queryDatasource' => true
                 ]
             ],
             'unauthorizedRedirect' => false,
-            'checkAuthIn' => 'Controller.initialize',
-            // If you don't have a login action in your application set
-            // 'loginAction' to false to prevent getting a MissingRouteException.
-            'loginAction' => false
+            'checkAuthIn' => 'Controller.initialize'
         ]);
     }
 
