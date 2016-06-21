@@ -3,9 +3,6 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
-use Cake\Network\Exception\UnauthorizedException;
-use Cake\Utility\Security;
-use Firebase\JWT\JWT;
 
 /**
  * Users Controller
@@ -14,10 +11,6 @@ use Firebase\JWT\JWT;
  */
 class UsersController extends AppController
 {
-    public function beforeFilter(Event $event)
-    {
-        $this->eventManager()->off($this->Csrf);
-    }
     /**
      * Index method
      *
