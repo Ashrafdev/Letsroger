@@ -23,6 +23,7 @@ class App {
 
     tokenSubscription:any;
     getThing:any;
+    useJwtHelper:any;
     thing:string;
 
     constructor(public authHttp:AuthHttp) {
@@ -55,7 +56,7 @@ class App {
         this.authHttp.get('http://localhost/api/users/register', {headers: myHeader})
             .subscribe(
                 data => this.thing = data,
-                err => console.log(error),
+                err => console.log(myHeader),
                 () => console.log('Request Complete')
             );
 
@@ -63,7 +64,7 @@ class App {
         this.authHttp.post('http://localhost/api/users/register', 'post body', {headers: myHeader})
             .subscribe(
                 data => this.thing = data,
-                err => console.log(error),
+                err => console.log(myHeader),
                 () => console.log('Request Complete')
             );
     }
