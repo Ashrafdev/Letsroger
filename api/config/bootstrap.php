@@ -232,4 +232,4 @@ Type::build('datetime')
 
 Plugin::load('Crud');
 Plugin::load('ADmad/JwtAuth');
-//Plugin::load('Muffin/Throttle');
+//Plugin::load('Muffin/Throttle'); // please php enable memcache extension
