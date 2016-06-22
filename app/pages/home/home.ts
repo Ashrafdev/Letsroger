@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {AuthHttp, AuthConfig, AUTH_PROVIDERS} from 'angular2-jwt';
+import {Http, Headers, HTTP_PROVIDERS} from '@angular/http';
+import {AuthHttp, AuthConfig, AUTH_PROVIDERS, JwtHelper} from 'angular2-jwt';
+import 'rxjs/add/operator/map';
 
 /*
  Generated class for the HomePage page.
@@ -19,14 +21,25 @@ export class HomePage {
 }
 class App {
 
-    tokenSubscription: any;
-    getThing: any;
+    tokenSubscription:any;
+    getThing:any;
     thing:string;
 
     constructor(public authHttp:AuthHttp) {
     }
 
-    let
+    jwtHelper:JwtHelper = new JwtHelper();
+
+    useJwtHelper() {
+        var token = localStorage.getItem('id_token');
+
+        console.log(
+            this.jwtHelper.decodeToken(token),
+            this.jwtHelper.getTokenExpirationDate(token),
+            this.jwtHelper.isTokenExpired(token)
+        );
+    }
+
     tokenSubscription = function () {
         this.authHttp.tokenStream.subscribe(
             data => console.log(data),
@@ -35,12 +48,11 @@ class App {
         );
     }
 
-    let
     getThing = function () {
         var myHeader = new Headers();
         myHeader.append('Content-Type', 'application/json');
 
-        this.authHttp.get('http://example.com/api/thing', {headers: myHeader})
+        this.authHttp.get('http://localhost/api/users/register', {headers: myHeader})
             .subscribe(
                 data => this.thing = data,
                 err => console.log(error),
@@ -48,14 +60,12 @@ class App {
             );
 
         // Pass it after the body in a POST request
-        this.authHttp.post('http://example.com/api/thing', 'post body', {headers: myHeader})
+        this.authHttp.post('http://localhost/api/users/register', 'post body', {headers: myHeader})
             .subscribe(
                 data => this.thing = data,
                 err => console.log(error),
                 () => console.log('Request Complete')
             );
-
-
     }
 }
 
