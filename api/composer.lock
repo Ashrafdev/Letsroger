@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fb59ff327be5dc5697a64b287f67771c",
-    "content-hash": "2dcb7692ce33ab72953eaa8b8fa27b8c",
+    "hash": "6f8db41ea8eac603e3b22e5485702c0d",
+    "content-hash": "22285c33b390cd436964fffe3fea2128",
     "packages": [
         {
             "name": "admad/cakephp-jwt-auth",
@@ -558,6 +558,67 @@
                 "php mobile detect"
             ],
             "time": "2016-04-24 09:47:16"
+        },
+        {
+            "name": "muffin/throttle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UseMuffin/Throttle.git",
+                "reference": "99a0886f6f88693b24986db63e154c1b5a1e59c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UseMuffin/Throttle/zipball/99a0886f6f88693b24986db63e154c1b5a1e59c6",
+                "reference": "99a0886f6f88693b24986db63e154c1b5a1e59c6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "cakephp/cakephp": "~3.0",
+                "cakephp/cakephp-codesniffer": "2.*",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Muffin\\Throttle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jad Bitar",
+                    "homepage": "http://jadb.io",
+                    "role": "Author"
+                },
+                {
+                    "name": "ADmad",
+                    "homepage": "https://github.com/ADmad",
+                    "role": "Author"
+                },
+                {
+                    "name": "Others",
+                    "homepage": "https://github.com/usemuffin/throttle/graphs/contributors"
+                },
+                {
+                    "name": "Bravo Kernel",
+                    "homepage": "https://github.com/bravo-kernel",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "(API) Rate limiting requests in CakePHP 3",
+            "homepage": "https://github.com/usemuffin/throttle",
+            "keywords": [
+                "Rate",
+                "cakephp",
+                "limit",
+                "muffin",
+                "throttle"
+            ],
+            "time": "2015-11-07 03:56:03"
         },
         {
             "name": "psr/log",
@@ -1392,6 +1453,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "muffin/throttle": 20,
         "psy/psysh": 0
     },
     "prefer-stable": true,
