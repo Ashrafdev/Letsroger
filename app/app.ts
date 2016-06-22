@@ -2,7 +2,7 @@ import {ionicBootstrap, Platform} from 'ionic-angular';
 import {Component} from '@angular/core';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import {Home} from './pages/home/home';
+// import {Home} from './pages/home/home';
 
 
 @Component({
