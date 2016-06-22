@@ -204,7 +204,17 @@ if (Configure::read('debug')) {
 DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
-
+//DispatcherFactory::add('Muffin/Throttle.Throttle', [
+//    'message' => 'Rate limit exceeded',
+//    'interval' => '+1 hour',
+//    'rate' => 100,
+//    'identifier' => function (Request $request) {
+//        if (null !== $request->header('Authorization')) {
+//            return str_replace('Bearer ', '', $request->header('Authorization'));
+//        }
+//        return $request->clientIp();
+//    }
+//]);
 /**
  * Enable immutable time objects in the ORM.
  *
@@ -222,4 +232,4 @@ Type::build('datetime')
 
 Plugin::load('Crud');
 Plugin::load('ADmad/JwtAuth');
-Plugin::load('Muffin/Throttle');
+//Plugin::load('Muffin/Throttle');
