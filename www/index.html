@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ionic</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link ios-href="build/css/app.ios.css" rel="stylesheet">
+    <link md-href="build/css/app.md.css" rel="stylesheet">
+    <link wp-href="build/css/app.wp.css" rel="stylesheet">
+</head>
+<body>
+<!-- cordova.js required for cordova apps -->
+<script src="cordova.js"></script>
+<script src="/build/static.js"></script>
+<script>
+    System.config({
+        baseURL: '/build',
+        packages: {
+            app: {
+                format: 'register',
+                defaultExtension: 'js'
+            }
+        },
+        paths: {
+            '*': './node_modules/*',
+            'app/*': 'app/*',
+            '@angular/core': './node_modules/@angular/core/index.js',
+            '@angular/http': './node_modules/@angular/http/index.js',
+            '@angular/compiler': './node_modules/@angular/compiler/index.js',
+            '@angular/common': './node_modules/@angular/common/index.js',
+            '@angular/router': './node_modules/@angular/router/index.js',
+            '@angular/platform-browser': './node_modules/@angular/platform-browser/index.js',
+            '@angular/platform-browser-dynamic': './node_modules/@angular/platform-browser-dynamic/index.js',
+            "ionic-angular": './node_modules/ionic-angular/index.js',
+            "ionic-native": './node_modules/ionic-native/dist/index.js'
+        },
+        defaultJSExtensions: true
+    });
+</script>
+
+<script src="/build/dependencies.js"></script>
+<!-- this Ionic's root component and where the app will load -->
+<script>
+    System.import('app/app').then(null, console.error.bind(console));
+</script>
+<ion-app></ion-app>
+</body>
+</html>

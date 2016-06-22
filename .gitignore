@@ -1,0 +1,20 @@
+# Specifies files to intentionally ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+www/build/
+platforms/
+plugins/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Exclude compiled files in app
+app/**/*.js
+app/**/*.js.map
+
+# Exclude typings
+typings
+
+# Exclude Webstorm-Bullshit
+.idea
