@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {Component, provide} from '@angular/core';
+import {NavController, ionicBootstrap} from 'ionic-angular';
 import {Http, Headers, HTTP_PROVIDERS} from '@angular/http';
 import {AuthHttp, AuthConfig, AUTH_PROVIDERS, JwtHelper} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
@@ -28,6 +28,8 @@ class App {
 
     constructor(public authHttp:AuthHttp) {
     }
+
+    title = 'Tour of Heroes';
 
     jwtHelper:JwtHelper = new JwtHelper();
 
@@ -70,15 +72,15 @@ class App {
     }
 }
 
-bootstrap(App, [
+ionicBootstrap(App, [
     HTTP_PROVIDERS,
     provide(AuthHttp, {
         useFactory: (http) => {
             return new AuthHttp(new AuthConfig({
-                headerName: YOUR_HEADER_NAME,
-                headerPrefix: YOUR_HEADER_PREFIX,
-                tokenName: YOUR_TOKEN_NAME,
-                tokenGetter: YOUR_TOKEN_GETTER_FUNCTION,
+                headerName: "YOUR_HEADER_NAME", // YOUR_HEADER_NAME
+                headerPrefix: "YOUR_HEADER_PREFIX", // YOUR_HEADER_PREFIX
+                tokenName: "YOUR_TOKEN_NAME", // YOUR_TOKEN_NAME
+                tokenGetter: "YOUR_TOKEN_GETTER_FUNCTION", // YOUR_TOKEN_GETTER_FUNCTION
                 globalHeaders: [{'Content-Type': 'application/json'}],
                 noJwtError: true,
                 noTokenScheme: true
