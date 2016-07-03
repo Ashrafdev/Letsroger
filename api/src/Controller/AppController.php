@@ -80,7 +80,6 @@ class AppController extends Controller
             ->allowMethods(['GET', 'PUT', 'POST', 'OPTIONS'])
             ->allowHeaders(['X-CSRF-Token'])
             ->allowCredentials()
-            ->exposeHeaders(['Link'])
             ->maxAge(300)
             ->build();
     }
