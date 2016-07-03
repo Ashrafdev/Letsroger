@@ -1,6 +1,6 @@
 myApps = angular.module('starter.controllers', ['ionic'])
 
-.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout,$ionicLoading, $http) {
+.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout,$ionicLoading, $http, $httpParamSerializer) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -12,7 +12,7 @@ myApps = angular.module('starter.controllers', ['ionic'])
     $scope.Users = function () {
 
         var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmNjcwNjBlZi1lNjE2LTRmODUtYTg5ZS04M2NlMjRlMjExMzYiLCJleHAiOjE0NjgwNzUwOTR9.OqCc59rB1rS0_Gy4r4UFNp7CK75EnysawDVwHGxc2kk";
-        // Simple GET request example:
+
         $http({
             method: 'GET',
             url: 'http://localhost/api/users',
@@ -39,18 +39,10 @@ myApps = angular.module('starter.controllers', ['ionic'])
 
         var self = this;
 
-        self.params = function ObjecttoParams(obj) {
-            var p = [];
-            for (var key in obj) {
-                p.push(key + '=' + encodeURIComponent(obj[key]));
-            }
-            return p.join('&');
-        };
-
         $http({
             method: 'POST',
             url: 'http://localhost/api/users/token',
-            data: self.params(users),
+            data: $httpParamSerializer(users),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/x-www-form-urlencoded'
