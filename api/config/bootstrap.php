@@ -204,6 +204,7 @@ if (Configure::read('debug')) {
 DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
+DispatcherFactory::add('Cors');
 //DispatcherFactory::add('Muffin/Throttle.Throttle', [
 //    'message' => 'Rate limit exceeded',
 //    'interval' => '+1 hour',

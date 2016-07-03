@@ -75,10 +75,9 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['add', 'token']);
         $this->response->cors($this->request)
             ->allowOrigin('*')
-            ->allowMethods(['PUT', 'POST', 'OPTIONS'])
+            ->allowMethods(['GET', 'PUT', 'POST', 'OPTIONS'])
             ->allowHeaders(['X-CSRF-Token'])
             ->allowCredentials()
             ->exposeHeaders(['Link'])
