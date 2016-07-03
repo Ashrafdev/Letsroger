@@ -1,6 +1,6 @@
 myApps = angular.module('starter.controllers', ['ionic'])
 
-.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout,$ionicLoading, $http, $httpParamSerializer) {
+.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout,$ionicLoading, $http, $httpParamSerializerJQLike) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -42,7 +42,7 @@ myApps = angular.module('starter.controllers', ['ionic'])
         $http({
             method: 'POST',
             url: 'http://localhost/api/users/token',
-            data: $httpParamSerializer(users),
+            data: $httpParamSerializerJQLike(users),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/x-www-form-urlencoded'
