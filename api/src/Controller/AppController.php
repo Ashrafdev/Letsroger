@@ -76,7 +76,7 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
         $this->response->cors($this->request)
-            ->allowOrigin('*')
+            ->allowOrigin('127.0.0.1')
             ->allowMethods(['GET', 'PUT', 'POST', 'OPTIONS'])
             ->allowHeaders(['X-CSRF-Token'])
             ->allowCredentials()
