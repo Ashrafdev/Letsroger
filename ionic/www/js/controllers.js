@@ -2,20 +2,81 @@ myApps = angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
   .controller('AppCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, $ionicLoading, $http, $httpParamSerializerJQLike) {
 
-    // With the new view caching in Ionic, Controllers are only called
-    // when they are recreated or on app start, instead of every page change.
-    // To listen for when this page is active (for example, to refresh data),
-    // listen for the $ionicView.enter event:
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
+    // Form data for the login modal
+    $scope.loginData = {username: '', password: '', spinner: false};
+
+    var api_url = 'http://localhost/api/';
+
+    /*users token*/
+
+    $scope.Token = function () {
+
+      var users = {
+        username: $scope.loginData.username,
+        password: $scope.loginData.password
+      };
+
+      // console.log($httpParamSerializerJQLike(users)); return;
+
+      // var self = this;
+
+      if (users.username == '' && users.password == '') {
+        $scope.showAlert("Login Failed", "Your crediential is not valid!");
+      }
+
+      $http({
+        method: 'POST',
+        url: api_url + 'users/token',
+        data: $httpParamSerializerJQLike(users),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(function successCallback(response) {
+
+        $scope.token = response;
+
+        console.log(response);
+
+        // $scope.showAlert("Login Success", "Welcome!");
+        // $timeout(function () {
+        //   $scope.closeLogin();
+        // }, 1000);
+
+      }, function errorCallback(response) {
+        $scope.token = response;
+        console.log(response);
+      });
+
+      $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function ($q, $location, $localStorage) {
+        return {
+          'request': function (config) {
+              config.headers = config.headers || {};
+              if ($localStorage.token) {
+                config.headers.Authorization = 'Bearer ' + $localStorage.token;
+              }
+              return config;
+          },
+          'responseError': function (response) {
+              if (response.status === 401 || response.status === 403) {
+                $location.path('/app/register');
+              }
+              return $q.reject(response);
+          }
+        };
+      }]);
+
+    };
 
     $scope.Users = function () {
 
       var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmNjcwNjBlZi1lNjE2LTRmODUtYTg5ZS04M2NlMjRlMjExMzYiLCJleHAiOjE0NjgwNzUwOTR9.OqCc59rB1rS0_Gy4r4UFNp7CK75EnysawDVwHGxc2kk";
 
+      /*users index*/
+
       $http({
         method: 'GET',
-        url: 'http://localhost/api/users',
+        url: api_url + 'users',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -30,35 +91,6 @@ myApps = angular.module('starter.controllers', ['ionic', 'ngCordova'])
       });
     };
 
-    $scope.Token = function () {
-
-      var users = {
-        username: "mike3",
-        password: "test123"
-      };
-
-      // var self = this;
-
-      $http({
-        method: 'POST',
-        url: 'http://localhost/api/users/token',
-        data: $httpParamSerializerJQLike(users),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }).then(function successCallback(response) {
-        $scope.token = response;
-        console.log(response);
-      }, function errorCallback(response) {
-        $scope.token = response;
-        console.log(response);
-      });
-    };
-
-
-    // Form data for the login modal
-    $scope.loginData = {username: '', password: '', spinner: false};
 
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/login.html', {
