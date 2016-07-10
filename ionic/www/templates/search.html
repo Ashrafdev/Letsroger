@@ -1,63 +1,76 @@
-<ion-view view-title="Search">
-  <ion-content>
-    <br><br><br><br>
-    <pr>{{ datas | json }}</pr>
-    <br><br><br><br>
-    <button ng-click="Users()" class="button button-positive">
-      button-positive
-    </button>
-    <br><br><br><br><br><br><br>
-  </ion-content>
+<!--<ion-view view-title="Search">-->
+<!--<ion-content>-->
 
-  <br><br><br><br><br><br><br><br><br><br>
-  <pr>{{ token | json }}</pr>
-  <br><br><br><br>
-  <button ng-click="Token()" class="button button-dark">
-    button-dark
-  </button>
-  <br><br><br><br>
+<!--<div class="card">-->
+<!--<div class="item item-text-wrap">-->
+<!--<pr>{{ datas | json }}</pr>-->
+<!--</div>-->
+<!--<br><br>-->
+<!--<button ng-click="Users()" class="button button-positive">-->
+<!--button-positive-->
+<!--</button>-->
+<!--</div>-->
 
-</ion-view>
 
-<!--<ion-view title="Aduan" id="page5" class=" ">-->
-<!--<ion-content padding="true" class="has-header">-->
-<!--<form id="aduan-form3" class="list ">-->
-<!--<ion-item class="item-icon-left royal  " id="aduan-list-item7">-->
-<!--<i class="icon ion-information-circled"></i>Butiran Pengadu</ion-item>-->
-<!--<label class="item item-input item-stacked-label " id="aduan-input9">-->
-<!--<span class="input-label">Nama :</span>-->
-<!--<input type="text" placeholder="">-->
-<!--</label>-->
-<!--<label class="item item-input item-stacked-label " id="aduan-input10">-->
-<!--<span class="input-label">MyKad No:</span>-->
-<!--<input type="text" placeholder="">-->
-<!--</label>-->
-<!--<label class="item item-input item-stacked-label " id="aduan-input11">-->
-<!--<span class="input-label">No Telefon :</span>-->
-<!--<input type="tel" placeholder="">-->
-<!--</label>-->
-<!--<ion-item class="item-icon-left royal  " id="aduan-list-item8">-->
-<!--<i class="icon ion-android-archive"></i>Butiran Aduan</ion-item>-->
-<!--<label class="item item-input " id="aduan-input12">-->
-<!--<span class="input-label">Tarikh</span>-->
-<!--<input type="date" placeholder="">-->
-<!--</label>-->
-<!--<label class="item item-input " id="aduan-input13">-->
-<!--<span class="input-label">Masa</span>-->
-<!--<input type="time" placeholder="">-->
-<!--</label>-->
-<!--<label class="item item-input item-stacked-label " id="aduan-input14">-->
-<!--<span class="input-label">Tempat Kejadian</span>-->
-<!--<input type="text" placeholder="">-->
-<!--</label>-->
-<!--<label class="item item-input item-stacked-label " id="aduan-input16">-->
-<!--<span class="input-label">No Plat Kenderaan</span>-->
-<!--<input type="text" placeholder="">-->
-<!--</label>-->
-<!--<label class="item item-input item-stacked-label " id="aduan-input15">-->
-<!--<span class="input-label">Ciri - ciri Kenderaan</span>-->
-<!--<input type="text" placeholder="">-->
-<!--</label>-->
-<!--</form>-->
+<!--<div class="card">-->
+<!--<div class="item item-text-wrap">-->
+<!--<pr>{{ token | json }}</pr>-->
+<!--</div>-->
+<!--<br><br>-->
+<!--<button ng-click="Token()" class="button button-dark">-->
+<!--button-dark-->
+<!--</button>-->
+<!--</div>-->
+
 <!--</ion-content>-->
 <!--</ion-view>-->
+
+<ion-view title="Aduan" id="page5" class=" ">
+  <ion-content padding="true" class="has-header">
+    <form id="aduan-form3" class="list" enctype="multipart/form-data">
+      <ion-item class="item-icon-left royal  " id="aduan-list-item7">
+        <i class="icon ion-information-circled"></i>
+        Butiran Pengadu
+      </ion-item>
+      <label class="item item-input item-stacked-label" id="aduan-input9">
+        <span class="input-label">Nama :</span>
+        <input type="text" placeholder="Wan ahmad Dollah">
+      </label>
+      <label class="item item-input item-stacked-label" id="aduan-input10">
+        <span class="input-label">MyKad No:</span>
+        <input type="text" placeholder="121283-14-1234">
+      </label>
+      <label class="item item-input" id="aduan-input11">
+        <span class="input-label">No Telefon :</span>
+        <input type="tel" placeholder="012-3456789">
+      </label>
+      <ion-item class="item-icon-left royal  " id="aduan-list-item8">
+        <i class="icon ion-android-archive"></i>Butiran Aduan
+      </ion-item>
+      <label class="item item-input " id="aduan-input12">
+        <span class="input-label">Tarikh</span>
+        <input type="date" placeholder="Tarikh Kejadian">
+      </label>
+      <label class="item item-input " id="aduan-input13">
+        <span class="input-label">Masa</span>
+        <input type="time" placeholder="Masa Kejadian">
+      </label>
+      <label class="item item-input item-stacked-label " id="aduan-input14">
+        <span class="input-label">Tempat Kejadian</span>
+        <input type="text" placeholder="Lebuh raya PLUS-Utara KM 457.55 berhampiran sg buloh">
+      </label>
+      <label class="item item-input item-stacked-label " id="aduan-input16">
+        <span class="input-label">No Plat Kenderaan</span>
+        <input type="text" placeholder="WWW 0000">
+      </label>
+      <label class="item item-input item-stacked-label " id="aduan-input15">
+        <span class="input-label">Jenis Dan Model Kenderaan</span>
+        <input type="text" placeholder="Perodua Myvi 1.6 / Berwarna Putih">
+      </label>
+      <label class="item item-input fileUpload" id="aduan-input17">
+        <span class="input-label">Salinan Foto Atau Video</span>
+        <input type="file" class="upload">
+      </label>
+    </form>
+  </ion-content>
+</ion-view>
