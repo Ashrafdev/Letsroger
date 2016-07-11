@@ -48,23 +48,23 @@ myApps = angular.module('starter.controllers', ['ionic', 'ngCordova'])
         console.log(response);
       });
 
-      // $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function ($q, $location, $localStorage) {
-      //   return {
-      //     'request': function (config) {
-      //         config.headers = config.headers || {};
-      //         if ($localStorage.token) {
-      //           config.headers.Authorization = 'Bearer ' + $localStorage.token;
-      //         }
-      //         return config;
-      //     },
-      //     'responseError': function (response) {
-      //         if (response.status === 401 || response.status === 403) {
-      //           $location.path('/app/register');
-      //         }
-      //         return $q.reject(response);
-      //     }
-      //   };
-      // }]);
+      $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function ($q, $location, $localStorage) {
+        return {
+          'request': function (config) {
+              config.headers = config.headers || {};
+              if ($localStorage.token) {
+                config.headers.Authorization = 'Bearer ' + $localStorage.token;
+              }
+              return config;
+          },
+          'responseError': function (response) {
+              if (response.status === 401 || response.status === 403) {
+                $location.path('/app/register');
+              }
+              return $q.reject(response);
+          }
+        };
+      }]);
 
     };
 
