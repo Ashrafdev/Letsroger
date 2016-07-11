@@ -33,16 +33,12 @@ myApps = angular.module('starter.controllers', ['ionic', 'ngCordova'])
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).then(function successCallback(response) {
-
         $scope.token = response;
-
         console.log(response);
-
         // $scope.showAlert("Login Success", "Welcome!");
         // $timeout(function () {
         //   $scope.closeLogin();
         // }, 1000);
-
       }, function errorCallback(response) {
         $scope.token = response;
         console.log(response);
